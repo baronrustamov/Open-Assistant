@@ -89,6 +89,9 @@ export const Task = ({ frontendId, task, trigger, mutate }) => {
           content: replyContent.current,
         });
         setTaskStatus("SUBMITTED");
+        // scroll back to top
+        // NOTE: this is extremely layout dependant
+        document.documentElement.scrollTop = 0;
         break;
       }
       default:

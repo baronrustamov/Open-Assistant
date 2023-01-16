@@ -31,14 +31,8 @@ export function SideMenu(props: SideMenuProps) {
       >
         <nav className="grid grid-cols-3 col-span-3 sm:flex sm:flex-col gap-2">
           {props.buttonOptions.map((item, itemIndex) => (
-            <Tooltip
-              key={itemIndex}
-              fontFamily="inter"
-              label={item.label}
-              placement="right"
-              className="hidden lg:hidden sm:block"
-            >
-              <Link key={`${item.label}-${itemIndex}`} href={item.pathname} style={{ textDecoration: "none" }}>
+            <Tooltip key={itemIndex} label={item.label} placement="right">
+              <Link href={item.pathname}>
                 <Button
                   justifyContent={["center", "center", "center", "left"]}
                   gap="3"
@@ -59,17 +53,15 @@ export function SideMenu(props: SideMenuProps) {
               </Link>
             </Tooltip>
           ))}
-        </nav>
-        <div>
-          <Tooltip fontFamily="inter" label="Toggle Dark Mode" placement="right" className="hidden lg:hidden sm:block">
-            <Button size="lg" width="full" justifyContent="center" onClick={toggleColorMode} gap="2">
+          <Tooltip label="Toggle Dark Mode" placement="right">
+            <Button size="lg" justifyContent="left" width="full" onClick={toggleColorMode} gap="3">
               <FiSun />
               <Text fontWeight="normal" className="hidden lg:block">
                 {colorMode === "light" ? "Dark Mode" : "Light Mode"}
               </Text>
             </Button>
           </Tooltip>
-        </div>
+        </nav>
       </Box>
     </main>
   );
